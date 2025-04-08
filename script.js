@@ -1,6 +1,6 @@
 let cupcakesCollection = null;
 
-$.get("https://6f186305-ab26-4839-b806-380e3560e049.mock.pstmn.io/cupcakes.json", function(data){
+/*$.get("https://6f186305-ab26-4839-b806-380e3560e049.mock.pstmn.io/cupcakes.json", function(data){
     displayCupcakes(data);
 
     cupcakesCollection = data;
@@ -8,8 +8,18 @@ $.get("https://6f186305-ab26-4839-b806-380e3560e049.mock.pstmn.io/cupcakes.json"
 }   ,"json").fail(function(){
 $("#cupcakes").empty();
 $("#cupcakes").append("<div>there was a problem trying to connect with the server, please try again</div>");
-});
+});*/
+$.ajax({
+    url:"https://6f186305-ab26-4839-b806-380e3560e049.mock.pstmn.io/cupcakes.json",
+    method:"GET",
+    datatype: "json"
+}).done(function(data){
+displayCupcakes(data);
+}).fail(function(){
+    $("#cupcakes").empty();
+    $("#cupcakes").append("<div>there was a problem trying to connect with the server, please try again</div>");
 
+});
 function displayCupcakes(data){
     $("#cupcakes").empty();
     let html = "";
